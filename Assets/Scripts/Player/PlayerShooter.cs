@@ -11,6 +11,7 @@ public class PlayerShooter : MonoBehaviour
 
     private List<GameObject> _projectilePool = new();
     private int name;
+    private float time;
 
     private void Start()
     {
@@ -20,16 +21,15 @@ public class PlayerShooter : MonoBehaviour
             projectile.SetActive(false);
             _projectilePool.Add(projectile);
         }
-
-        StartCoroutine(FireProjectile());
     }
 
-    private IEnumerator FireProjectile()
+    private void Update()
     {
-        while (true)
+        time += Time.deltaTime;
+        if (time >= spawnRate)
         {
-            yield return new WaitForSeconds(spawnRate);
             Fire();
+            time = 0;
         }
     }
 
@@ -46,16 +46,10 @@ public class PlayerShooter : MonoBehaviour
 
     private GameObject GetProjectileFromPool()
     {
-        /*foreach (GameObject projectile in _projectilePool)
+        foreach (GameObject projectile in _projectilePool)
         {
             if (!projectile.activeInHierarchy)
-                return projectile; Debug.Log(projectile.name);
-        }*/
-
-        for (int i = 0; i < _projectilePool.Count; i++)
-        {
-            if (!_projectilePool[i].activeInHierarchy)
-                return _projectilePool[i]; 
+                return projectile; 
         }
 
         return null;
