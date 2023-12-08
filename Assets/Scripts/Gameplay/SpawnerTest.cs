@@ -7,11 +7,13 @@ public class SpawnerTest : MonoBehaviour
     public ObjectPoolScript[] objectPools;
 
     public int totalSpawn;
-    public float spawnDelay = 2f; 
+    public float spawnDelay = 2f;
     private int spawnedCount = 0;
 
     private int currentWave = 0;
     public float delayWave;
+
+    private int lastSpawnPointIndex = -1; // Track the last spawned spawn point
 
     void Start()
     {
@@ -40,7 +42,7 @@ public class SpawnerTest : MonoBehaviour
 
         // Restart
         yield return new WaitForSeconds(delayWave);
-        
+
         spawnedCount = 0;
 
         if (currentWave % 5 == 0)
@@ -49,6 +51,8 @@ public class SpawnerTest : MonoBehaviour
 
             currentWave++;
         }
+
+        lastSpawnPointIndex = -1; // Reset the last spawned spawn point index
 
         StartCoroutine(SpawnObjectsWithDelay());
     }
@@ -66,25 +70,44 @@ public class SpawnerTest : MonoBehaviour
             randomPool = Random.Range(0, objectPools.Length);
         }
 
-        int randomPosition = Random.Range(0, spawnPoints.Length);
+        int randomPosition = GetRandomSpawnPointIndex();
 
-        if (objectPools != null && objectPools.Length > randomPool)
+        if (objectPools != null && objectPools.Length > randomPool && spawnPoints != null && spawnPoints.Length > randomPosition)
         {
-            GameObject obj = objectPools[randomPool].GetPooledObject();
+            GameObject obj = objectPools[randomPool]?.GetPooledObject();
 
-            if (obj == null) return;
-
-            obj.transform.position = spawnPoints[randomPosition].position;
-            obj.SetActive(true);
-
-            if(currentWave % 5 == 0)
+            if (obj != null)
             {
-                obj.gameObject.GetComponent<ObstacleBehav>().moveSpeed = Mathf.Max(1f, obj.gameObject.GetComponent<ObstacleBehav>().moveSpeed - 0.5f);
+                obj.transform.position = spawnPoints[randomPosition].position;
+                obj.SetActive(true);
+
+                lastSpawnPointIndex = randomPosition; 
+
+                if (currentWave % 5 == 0)
+                {
+                    ObstacleBehav obstacleBehav = obj.GetComponent<ObstacleBehav>();
+                    if (obstacleBehav != null)
+                    {
+                        obstacleBehav.moveSpeed = Mathf.Max(1f, obstacleBehav.moveSpeed - 0.5f);
+                    }
+
+                    EnemyShip enemyShip = obj.GetComponent<EnemyShip>();
+                    if (enemyShip != null)
+                    {
+                        enemyShip.moveSpeed = Mathf.Max(1f, enemyShip.moveSpeed - 0.5f);
+                    }
+                }
             }
         }
     }
+
+    private int GetRandomSpawnPointIndex()
+    {
+        int randomIndex = Random.Range(0, spawnPoints.Length);
+        while (randomIndex == lastSpawnPointIndex)
+        {
+            randomIndex = Random.Range(0, spawnPoints.Length);
+        }
+        return randomIndex;
+    }
 }
-
-
-
-
