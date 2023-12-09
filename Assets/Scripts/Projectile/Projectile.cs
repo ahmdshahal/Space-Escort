@@ -40,6 +40,7 @@ public class Projectile : MonoBehaviour
         if (collision.transform.TryGetComponent(out Enemy obstacleBehav))
         {
             obstacleBehav.TakeDamage(projectileDamage);
+            CancelInvoke();
             ReturnToPool();
         }
     }

@@ -19,6 +19,7 @@ public class ProgressBar : MonoBehaviour
         if (_time >= maxTime)
         {
             //End Game
+            GameplayManager.instance.GameClearScreen();
         }
     }
 

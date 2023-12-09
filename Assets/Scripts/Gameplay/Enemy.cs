@@ -14,14 +14,14 @@ public class Enemy : MonoBehaviour
 
     public float moveSpeed = 5;
 
-    private MeshRenderer _meshRenderer;
+    public MeshRenderer _meshRenderer;
     private Vector3 _targetTransform;
     private float _currentHealth;
     private float _currentSpeed;
 
     private void Awake()
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
+        //_meshRenderer = GetComponent<MeshRenderer>();
         _targetTransform = Vector3.zero;
     }
 

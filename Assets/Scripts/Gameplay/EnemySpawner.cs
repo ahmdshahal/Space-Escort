@@ -45,9 +45,9 @@ public class EnemySpawner : MonoBehaviour
 
         spawnedCount = 0;
 
-        if (currentWave % 5 == 0)
+        if (currentWave % 3 == 0)
         {
-            spawnDelay = Mathf.Max(2f, spawnDelay - 0.5f);
+            spawnDelay = Mathf.Max(1f, spawnDelay - 0.5f);
 
             currentWave++;
         }
@@ -83,7 +83,7 @@ public class EnemySpawner : MonoBehaviour
 
                 lastSpawnPointIndex = randomPosition; 
 
-                if (currentWave % 5 == 0)
+                if (currentWave % 3 == 0)
                 {
                     Enemy enemy = obj.GetComponent<Enemy>();
                     if (enemy != null)
@@ -91,11 +91,11 @@ public class EnemySpawner : MonoBehaviour
                         enemy.moveSpeed = Mathf.Max(7f, enemy.moveSpeed + 0.2f);
                     }
 
-                    EnemyShip enemyShip = obj.GetComponent<EnemyShip>();
-                    if (enemyShip != null)
-                    {
-                        enemyShip.moveSpeed = Mathf.Max(7f, enemyShip.moveSpeed + 0.2f);
-                    }
+                    //EnemyShip enemyShip = obj.GetComponent<EnemyShip>();
+                    //if (enemyShip != null)
+                    //{
+                    //    enemyShip.moveSpeed = Mathf.Max(7f, enemyShip.moveSpeed + 0.2f);
+                    //}
                 }
             }
         }

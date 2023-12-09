@@ -10,6 +10,7 @@ public class ExpBar : MonoBehaviour
     
     [SerializeField] private Slider expBar;
     [SerializeField] private float maxExp;
+    [SerializeField] private UpgradeManager upgradeManager;
 
     private float _currentExp;
 
@@ -28,6 +29,7 @@ public class ExpBar : MonoBehaviour
         {
             //Muncul pop up upgrade
             GameplayManager.instance.UpgradePanel();
+            upgradeManager.ToggleUpgradePanel();
             _currentExp = 0;
         }
     }

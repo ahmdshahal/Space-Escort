@@ -7,6 +7,8 @@ public class GameplayManager : MonoBehaviour
 {
     [SerializeField] private GameObject GameOverPanel;
 
+    [SerializeField] private GameObject GameClearPanel;
+
     [SerializeField] private GameObject upgradePanel;
 
     public int score;
@@ -62,5 +64,12 @@ public class GameplayManager : MonoBehaviour
     {
         isGameplay = true;
         Time.timeScale = 1;
+    }
+
+    public void GameClearScreen()
+    {
+        Debug.Log("GameClear");
+        GameClearPanel.SetActive(true);
+        isGameplay = false;
     }
 }
