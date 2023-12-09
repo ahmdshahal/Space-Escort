@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerShooter : MonoBehaviour
 {
     [SerializeField] private Transform fireTransform;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float spawnRate;
+    [SerializeField] private float fireRate;
 
     private List<GameObject> _projectilePool = new();
     private int name;
@@ -26,7 +27,7 @@ public class PlayerShooter : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
-        if (time >= spawnRate)
+        if (time >= fireRate)
         {
             Fire();
             time = 0;
@@ -53,5 +54,10 @@ public class PlayerShooter : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void UpgradeFireRate(float upgradePercentage)
+    {
+        fireRate *= (1.0f - upgradePercentage / 100);
     }
 }

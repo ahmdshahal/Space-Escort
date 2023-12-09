@@ -6,7 +6,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private int projectileDamage = 10;
-    [SerializeField] private int missileSpeed = 10;
+    [SerializeField] private float missileSpeed = 10;
     [SerializeField] private float _lifeTime = 2.0f;
 
     private float _currentMissileSpeed;
@@ -40,5 +40,10 @@ public class Projectile : MonoBehaviour
         {
             obstacleBehav.TakeDamage(projectileDamage);
         }
+    }
+
+    public void UpgradeMissileSpeed(float upgradePercentage)
+    {
+        missileSpeed *= (1.0f + upgradePercentage / 100f);
     }
 }

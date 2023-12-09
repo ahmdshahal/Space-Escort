@@ -7,9 +7,10 @@ using UnityEngine.Serialization;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private ParticleSystem explosionEffect;
+    [SerializeField] private GameObject expPointPrefab;
     [SerializeField] private int enemyDamage = 5;
     [SerializeField] private float enemyHealth = 10;
-    [SerializeField] private int Scorepoint = 5;
+    [SerializeField] private int score = 5;
 
     public float moveSpeed = 5;
 
@@ -49,7 +50,7 @@ public class Enemy : MonoBehaviour
         if (_currentHealth <= 0)
         {
             //Death condition
-            GameplayManager.instance.Addscore(Scorepoint);
+            GameplayManager.instance.Addscore(score);
             StartCoroutine(Dead());
         }
     }
@@ -64,12 +65,20 @@ public class Enemy : MonoBehaviour
         ParticleSystem.MainModule mainModule = explosionEffect.main;
         yield return new WaitForSeconds(mainModule.duration);
         
+        if(_currentHealth<=0)
+            SpawnExpPoint();
+        
         ReturnToPool();
     }
 
     private void ReturnToPool()
     {
         gameObject.SetActive(false);
+    }
+
+    private void SpawnExpPoint()
+    {
+        Instantiate(expPointPrefab, transform.position, Quaternion.identity);
     }
 
     private void OnCollisionEnter(Collision other)
