@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private ParticleSystem explosionEffect;
     [SerializeField] private int enemyDamage = 5;
     [SerializeField] private float enemyHealth = 10;
-    
+    [SerializeField] private int Scorepoint = 5;
+
     public float moveSpeed = 5;
 
     private MeshRenderer _meshRenderer;
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
         if (_currentHealth <= 0)
         {
             //Death condition
+            GameplayManager.instance.Addscore(Scorepoint);
             StartCoroutine(Dead());
         }
     }

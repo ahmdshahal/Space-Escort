@@ -27,6 +27,7 @@ public class SpaceShip : MonoBehaviour
         {
             StartCoroutine(Dead());
             //GameOver
+            GameplayManager.instance.GameOverScreen();
         }
     }
 
