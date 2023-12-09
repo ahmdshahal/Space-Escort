@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 119147516}
   - component: {fileID: 119147517}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,7 +1373,6 @@ GameObject:
   m_Component:
   - component: {fileID: 479365087}
   - component: {fileID: 479365089}
-  - component: {fileID: 479365088}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1396,14 +1395,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 703456183}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!81 &479365088
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479365086}
-  m_Enabled: 1
 --- !u!20 &479365089
 Camera:
   m_ObjectHideFlags: 0
@@ -1699,10 +1690,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2956681101865425927, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 3221094261804151931, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1
@@ -1743,37 +1730,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3417732453940274975, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016186421761435557, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
-      propertyPath: moveSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016186421761435557, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
-      propertyPath: rotationSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5424328960336446825, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5600364903403638591, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6591996957692036230, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 7014501525676877997, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7014501525676877997, guid: ecefd59f8fc242749941cf38d80f43ee, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2047,8 +2006,9 @@ GameObject:
   m_Component:
   - component: {fileID: 833053009}
   - component: {fileID: 833053010}
+  - component: {fileID: 833053011}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2127,6 +2087,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &833053011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833053008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4139c9dbcb84fac4db6fdb99f201ac7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBar: {fileID: 833053010}
+  maxTime: 60
 --- !u!1 &914855406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,8 +2807,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1675058966}
   - component: {fileID: 1675058967}
+  - component: {fileID: 1675058968}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: ExpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2913,6 +2888,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1675058968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675058965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426f32cb80c66d341a5f856f58a004a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expBar: {fileID: 1675058967}
+  maxExp: 50
 --- !u!1 &1728650141
 GameObject:
   m_ObjectHideFlags: 0

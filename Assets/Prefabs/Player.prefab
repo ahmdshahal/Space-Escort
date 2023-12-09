@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 8532072256193584449}
   projectilePrefab: {fileID: 276351651957094271, guid: a37de1f12b6286f44878cf108f40b412, type: 3}
-  spawnRate: 0.6
+  fireRate: 1
 --- !u!1 &680534236564967338
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 2269286060389010987}
   projectilePrefab: {fileID: 276351651957094271, guid: a37de1f12b6286f44878cf108f40b412, type: 3}
-  spawnRate: 0.6
+  fireRate: 1
 --- !u!1 &1087151576193367319
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 5844643035461045580}
   projectilePrefab: {fileID: 276351651957094271, guid: a37de1f12b6286f44878cf108f40b412, type: 3}
-  spawnRate: 0.6
+  fireRate: 1
 --- !u!1 &2144814229380946940
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,9 +185,10 @@ GameObject:
   - component: {fileID: 616291215645804586}
   - component: {fileID: 6226249455124009822}
   - component: {fileID: 5424328960336446825}
-  m_Layer: 0
+  - component: {fileID: 2878472070615769088}
+  m_Layer: 6
   m_Name: PlayerMesh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -273,12 +274,39 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2878472070615769088
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2956681101865425927}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3417732453940274975
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +319,7 @@ GameObject:
   - component: {fileID: 4327886566010069671}
   - component: {fileID: 8358978642186404557}
   - component: {fileID: 5600364903403638591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +408,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -500,7 +528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 493216972909186809}
   projectilePrefab: {fileID: 276351651957094271, guid: a37de1f12b6286f44878cf108f40b412, type: 3}
-  spawnRate: 0.6
+  fireRate: 1
 --- !u!1 &4286544972475044878
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258484051352433717}
   - component: {fileID: 2274887423702294937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireTransform
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -598,7 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 1258484051352433717}
   projectilePrefab: {fileID: 276351651957094271, guid: a37de1f12b6286f44878cf108f40b412, type: 3}
-  spawnRate: 0.4
+  fireRate: 1
 --- !u!1 &7014501525676877997
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +638,7 @@ GameObject:
   - component: {fileID: 3221094261804151931}
   - component: {fileID: 1981793933071425096}
   - component: {fileID: 4016186421761435557}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4451c1e5518617f45810c4b3b1684476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 10
   rotationSpeed: 10
 --- !u!1 &7262037398430760750
 GameObject:
@@ -706,7 +734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 6891423510609331779}
   projectilePrefab: {fileID: 276351651957094271, guid: a37de1f12b6286f44878cf108f40b412, type: 3}
-  spawnRate: 0.6
+  fireRate: 1
 --- !u!1 &8697472343092744663
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,4 +781,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 7125159463109932232}
   projectilePrefab: {fileID: 276351651957094271, guid: a37de1f12b6286f44878cf108f40b412, type: 3}
-  spawnRate: 0.6
+  fireRate: 1
