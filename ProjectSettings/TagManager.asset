@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Obstacle1
+  - SpaceShip
   layers:
   - Default
   - TransparentFX

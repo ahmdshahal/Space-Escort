@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class SpawnerTest : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public ObjectPoolScript[] objectPools;
@@ -85,16 +85,16 @@ public class SpawnerTest : MonoBehaviour
 
                 if (currentWave % 5 == 0)
                 {
-                    ObstacleBehav obstacleBehav = obj.GetComponent<ObstacleBehav>();
-                    if (obstacleBehav != null)
+                    Enemy enemy = obj.GetComponent<Enemy>();
+                    if (enemy != null)
                     {
-                        obstacleBehav.moveSpeed = Mathf.Max(1f, obstacleBehav.moveSpeed - 0.5f);
+                        enemy.moveSpeed = Mathf.Max(7f, enemy.moveSpeed + 0.2f);
                     }
 
                     EnemyShip enemyShip = obj.GetComponent<EnemyShip>();
                     if (enemyShip != null)
                     {
-                        enemyShip.moveSpeed = Mathf.Max(1f, enemyShip.moveSpeed - 0.5f);
+                        enemyShip.moveSpeed = Mathf.Max(7f, enemyShip.moveSpeed + 0.2f);
                     }
                 }
             }

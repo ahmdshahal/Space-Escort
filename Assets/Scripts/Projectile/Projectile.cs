@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private int projectileDamage = 50;
+    [SerializeField] private int projectileDamage = 10;
     [SerializeField] private int missileSpeed = 10;
     [SerializeField] private float _lifeTime = 2.0f;
 
@@ -32,5 +32,13 @@ public class Projectile : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Translate(Vector3.forward *(_currentMissileSpeed*Time.deltaTime));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.TryGetComponent(out Enemy obstacleBehav))
+        {
+            obstacleBehav.TakeDamage(projectileDamage);
+        }
     }
 }

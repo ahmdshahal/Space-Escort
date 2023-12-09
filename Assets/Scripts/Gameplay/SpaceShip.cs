@@ -1,28 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpaceShip : MonoBehaviour
 {
-    public ParticleSystem impactParticle;
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private float health;
 
-    private void OnTriggerEnter(Collider other)
+    private float _currentHealth;
+
+    private void Start()
     {
-        if(other.gameObject.CompareTag("Obstacle"))
+        _currentHealth = health;
+    }
+
+    public void TakeDamage(float amount)
+    {
+        _currentHealth -= amount;
+        SetUIHealth();
+
+        if (_currentHealth <= 0)
         {
-            other.gameObject.SetActive(false);
-            ShowImpactParticle();
-            Debug.Log("hit Spaceship");
+            //GameOver
         }
     }
 
-    private void ShowImpactParticle()
+    private void SetUIHealth()
     {
-        if (impactParticle != null)
-        {
-            ParticleSystem impactInstance = Instantiate(impactParticle, transform.position, Quaternion.identity);
-
-            Destroy(impactInstance.gameObject, impactInstance.main.duration);
-        }
+        healthBar.value = _currentHealth / health;
     }
 }
