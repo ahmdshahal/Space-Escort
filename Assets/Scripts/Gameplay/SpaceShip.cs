@@ -8,7 +8,7 @@ public class SpaceShip : MonoBehaviour
 {
     [SerializeField] private ParticleSystem explosionEffect;
     [SerializeField] private MeshRenderer shipRenderer;
-    [SerializeField] private Slider healthBar;
+    [SerializeField] private Image healthBar;
     [SerializeField] private float health;
 
     private float _currentHealth;
@@ -33,7 +33,7 @@ public class SpaceShip : MonoBehaviour
 
     private void SetUIHealth()
     {
-        healthBar.value = _currentHealth / health;
+        healthBar.fillAmount = _currentHealth / health;
     }
     
     private IEnumerator Dead()

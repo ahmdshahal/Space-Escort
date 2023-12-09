@@ -33,6 +33,7 @@ public class ExpBar : MonoBehaviour
             GameplayManager.instance.UpgradePanel();
             upgradeManager.ToggleUpgradePanel();
             _currentExp = 0;
+            SetUIExp();
         }
     }
 
