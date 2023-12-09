@@ -47,6 +47,8 @@ public class PlayerShooter : MonoBehaviour
             projectile.transform.rotation = fireTransform.rotation;
             projectile.SetActive(true);
         }
+
+        SoundManagerScript.instance.Playsound(0);
     }
 
     private GameObject GetProjectileFromPool()

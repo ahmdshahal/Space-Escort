@@ -28,6 +28,8 @@ public class ExpBar : MonoBehaviour
         if (_currentExp >= maxExp)
         {
             //Muncul pop up upgrade
+            SoundManagerScript.instance.Playsound(3);
+
             GameplayManager.instance.UpgradePanel();
             upgradeManager.ToggleUpgradePanel();
             _currentExp = 0;

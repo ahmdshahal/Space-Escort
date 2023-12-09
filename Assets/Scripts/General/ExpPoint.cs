@@ -23,6 +23,7 @@ public class ExpPoint : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("GetExp");
+            SoundManagerScript.instance.Playsound(2);
             CancelInvoke();
             SetInactive();
             ExpBar.instance.AddExpPoint(expAmount);

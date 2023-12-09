@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator Dead()
     {
         explosionEffect.Play();
+        SoundManagerScript.instance.Playsound(1);
 
         _meshRenderer.enabled = false;
         _currentSpeed = 0;

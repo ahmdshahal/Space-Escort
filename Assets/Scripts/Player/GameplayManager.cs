@@ -50,6 +50,7 @@ public class GameplayManager : MonoBehaviour
 
     public void GameOverScreen()
     {
+        SoundManagerScript.instance.Playsound(5);
         GameOverPanel.SetActive(true);
         isGameplay = false;
     }
@@ -69,6 +70,7 @@ public class GameplayManager : MonoBehaviour
     public void GameClearScreen()
     {
         Debug.Log("GameClear");
+        SoundManagerScript.instance.Playsound(4);
         GameClearPanel.SetActive(true);
         isGameplay = false;
     }
