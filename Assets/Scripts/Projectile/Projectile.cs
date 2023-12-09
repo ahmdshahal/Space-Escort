@@ -6,7 +6,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private int projectileDamage = 10;
-    [SerializeField] private float missileSpeed = 10;
+    float missileSpeed;
     [SerializeField] private float _lifeTime = 2.0f;
 
     private float _currentMissileSpeed;
@@ -20,6 +20,7 @@ public class Projectile : MonoBehaviour
     private void OnEnable()
     {
         Invoke("ReturnToPool", _lifeTime);
+        missileSpeed = UpgradeStats.instance.missileSpeed;
         _meshRenderer.enabled = true;
         _currentMissileSpeed = missileSpeed;
     }
@@ -39,11 +40,7 @@ public class Projectile : MonoBehaviour
         if (collision.transform.TryGetComponent(out Enemy obstacleBehav))
         {
             obstacleBehav.TakeDamage(projectileDamage);
+            ReturnToPool();
         }
-    }
-
-    public void UpgradeMissileSpeed(float upgradePercentage)
-    {
-        missileSpeed *= (1.0f + upgradePercentage / 100f);
     }
 }

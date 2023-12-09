@@ -32,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 46625103590964610}
+  - {fileID: 1402166517118013233}
   - {fileID: 1739145367625899758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54,8 +55,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.37, y: 3.96, z: 4.27}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 7.2948513, y: 2.851034, z: 3.37}
+  m_Center: {x: 0.05419445, y: 0.55448306, z: 0}
 --- !u!114 &8854765405227074357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +87,7 @@ GameObject:
   - component: {fileID: 2748523867805773063}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: SpaceShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +122,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7312499028015409637}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -173,10 +174,113 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1513146226277181658
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5453232470221131566}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6606743
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6606743
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6606743
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      propertyPath: m_Name
+      value: Cargo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7092070040823879950}
+  m_SourcePrefab: {fileID: 100100000, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+--- !u!4 &1402166517118013233 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+  m_PrefabInstance: {fileID: 1513146226277181658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1747026842267964811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e3ed6852baae0aa47ae3c5152c72f3cb, type: 3}
+  m_PrefabInstance: {fileID: 1513146226277181658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7092070040823879950
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747026842267964811}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88ef63b807865404298bdfb2d61d085b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1739145367626004306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 436668, guid: 136a22198192656408ddc2d583cf33e6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.88
+      value: -0.22
       objectReference: {fileID: 0}
     - target: {fileID: 436668, guid: 136a22198192656408ddc2d583cf33e6, type: 3}
       propertyPath: m_LocalRotation.w

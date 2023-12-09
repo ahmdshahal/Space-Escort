@@ -8,7 +8,7 @@ public class PlayerShooter : MonoBehaviour
 {
     [SerializeField] private Transform fireTransform;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float fireRate;
+    float fireRate;
 
     private List<GameObject> _projectilePool = new();
     private int name;
@@ -16,6 +16,8 @@ public class PlayerShooter : MonoBehaviour
 
     private void Start()
     {
+        fireRate = UpgradeStats.instance.fireRate;
+
         for (int i = 0; i < 15; i++)
         {
             GameObject projectile = Instantiate(projectilePrefab);
@@ -39,6 +41,8 @@ public class PlayerShooter : MonoBehaviour
         GameObject projectile = GetProjectileFromPool();
         if (projectile != null)
         {
+            fireRate = UpgradeStats.instance.fireRate;
+
             projectile.transform.position = fireTransform.position;
             projectile.transform.rotation = fireTransform.rotation;
             projectile.SetActive(true);
@@ -56,8 +60,16 @@ public class PlayerShooter : MonoBehaviour
         return null;
     }
 
-    public void UpgradeFireRate(float upgradePercentage)
-    {
-        fireRate *= (1.0f - upgradePercentage / 100);
-    }
+    //public void UpgradeFireRate(float upgradePercentage)
+    //{
+    //    fireRate *= (1.0f - upgradePercentage / 100);
+    //}
+
+    //public void UpgradeMissile(float amount)
+    //{
+    //    for (int i = 0; i < _projectilePool.Count; i++)
+    //    {
+    //        _projectilePool[i].GetComponent<Projectile>().UpgradeMissileSpeed(amount);
+    //    }
+    //}
 }

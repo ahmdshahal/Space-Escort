@@ -5,10 +5,12 @@ using TMPro;
 
 public class GameplayManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text scoreText;
     [SerializeField] private GameObject GameOverPanel;
+
+    [SerializeField] private GameObject upgradePanel;
+
     public int score;
-    public bool isGameplay;
+    public bool isGameplay = true;
 
     public static GameplayManager instance;
 
@@ -24,12 +26,18 @@ public class GameplayManager : MonoBehaviour
     void Start()
     {
         GameOverPanel.SetActive(false);
+        upgradePanel.gameObject.SetActive(false);
+
+        isGameplay = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(!isGameplay)
+        {
+            Time.timeScale = 0;
+        }
     }
 
     public void Addscore(int addedScore)
@@ -41,6 +49,18 @@ public class GameplayManager : MonoBehaviour
     public void GameOverScreen()
     {
         GameOverPanel.SetActive(true);
-        Time.timeScale = 0;
+        isGameplay = false;
+    }
+
+    public void UpgradePanel()
+    {
+        upgradePanel.gameObject.SetActive(true);
+        isGameplay = false;
+    }
+
+    public void unPause()
+    {
+        isGameplay = true;
+        Time.timeScale = 1;
     }
 }
