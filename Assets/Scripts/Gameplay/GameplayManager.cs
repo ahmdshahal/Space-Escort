@@ -35,7 +35,7 @@ public class GameplayManager : MonoBehaviour
     public void Addscore(int addedScore)
     {
         score += addedScore;
-        scoreText.text = score.ToString();
+        //scoreText.text = score.ToString();
     }
 
     public void GameOverScreen()
