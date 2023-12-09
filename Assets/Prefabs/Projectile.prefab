@@ -122,4 +122,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 50
   missileSpeed: 20
-  _lifeTime: 5
+  _lifeTime: 4
