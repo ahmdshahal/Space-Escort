@@ -8,11 +8,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float rotationSpeed = 5;
 
-    private Vector3 targetPosition;
+    private Vector3 _targetPosition;
+    private float _currentSpeed;
+
+    private void Start()
+    {
+        _currentSpeed = moveSpeed;
+    }
 
     public void Movement()
     {
-        transform.Translate(Vector3.forward * (moveSpeed * Time.deltaTime));
+        transform.Translate(Vector3.forward * (_currentSpeed * Time.deltaTime));
     }
 
     public void Aim(Vector2 input)
@@ -23,13 +29,13 @@ public class PlayerController : MonoBehaviour
             Debug.DrawLine(ray.origin, hit.point);
 
             // Tetapkan tinggi karakter agar tidak mempengaruhi posisi vertikalnya
-            targetPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            _targetPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
 
             // Periksa apakah pemain sudah mendekati atau berada di posisi target
-            if (Vector3.Distance(transform.position, targetPosition) > .5f)
+            if (Vector3.Distance(transform.position, _targetPosition) > .5f)
             {
                 // Rotasi karakter ke arah posisi target
-                Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+                Quaternion targetRotation = Quaternion.LookRotation(_targetPosition - transform.position);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
                 
                 SetMoveSpeed();
@@ -43,11 +49,11 @@ public class PlayerController : MonoBehaviour
 
     private void SetMoveSpeed()
     {
-        moveSpeed = 5;
+        _currentSpeed = moveSpeed;
     }
 
     private void StopMoveSpeed()
     {
-        moveSpeed = 0;
+        _currentSpeed = 0;
     }
 }

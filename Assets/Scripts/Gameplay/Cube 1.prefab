@@ -121,9 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 5734724356322889901}
+  expPointPrefab: {fileID: 2219620143503880174, guid: b15ceba91abe2be4083a62784079d34c, type: 3}
   enemyDamage: 5
   enemyHealth: 1
-  Scorepoint: 5
+  score: 5
   moveSpeed: 5
 --- !u!54 &7871727453116986996
 Rigidbody:
