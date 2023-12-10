@@ -47,9 +47,13 @@ public class EnemySpawner : MonoBehaviour
 
         if (currentWave % 3 == 0)
         {
-            spawnDelay = Mathf.Max(1f, spawnDelay - 0.5f);
-
+            spawnDelay = Mathf.Max(0.5f, spawnDelay - 0.75f);
             currentWave++;
+        }
+
+        if (currentWave % 4 == 0)
+        {
+            spawnDelay = Mathf.Max(12f, spawnDelay - 1f);
         }
 
         lastSpawnPointIndex = -1; // Reset the last spawned spawn point index
@@ -88,7 +92,7 @@ public class EnemySpawner : MonoBehaviour
                     Enemy enemy = obj.GetComponent<Enemy>();
                     if (enemy != null)
                     {
-                        enemy.moveSpeed = Mathf.Max(7f, enemy.moveSpeed + 0.2f);
+                        enemy.moveSpeed = Mathf.Max(7.5f, enemy.moveSpeed + 0.25f);
                     }
 
                     //EnemyShip enemyShip = obj.GetComponent<EnemyShip>();

@@ -2196,7 +2196,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 5
+          m_FloatArgument: 7.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -2907,7 +2907,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3121,10 +3121,10 @@ RectTransform:
   m_Children:
   - {fileID: 891595757}
   - {fileID: 254324492}
-  - {fileID: 1801916160}
   - {fileID: 158803416}
   - {fileID: 891219046}
   - {fileID: 204891954}
+  - {fileID: 1801916160}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4618,7 +4618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1454888959}
-  maxTime: 180
+  maxTime: 300
 --- !u!114 &1454888959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5664,7 +5664,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 5
+          m_FloatArgument: 7.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
