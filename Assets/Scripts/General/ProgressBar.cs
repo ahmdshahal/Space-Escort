@@ -13,13 +13,16 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
-        _time += Time.deltaTime;
-        SetUIProgress();
-
-        if (_time >= maxTime)
+        if (GameplayManager.instance.isPlaying)
         {
-            //End Game
-            GameplayManager.instance.GameClearScreen();
+            _time += Time.deltaTime;
+            SetUIProgress();
+
+            if (_time >= maxTime)
+            {
+                //End Game
+                GameplayManager.instance.GameClearScreen();
+            }
         }
     }
 

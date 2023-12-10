@@ -28,11 +28,14 @@ public class PlayerShooter : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
-        if (time >= fireRate)
+        if (GameplayManager.instance.isPlaying)
         {
-            Fire();
-            time = 0;
+            time += Time.deltaTime;
+            if (time >= fireRate)
+            {
+                Fire();
+                time = 0;
+            }
         }
     }
 

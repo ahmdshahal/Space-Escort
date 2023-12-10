@@ -34,12 +34,15 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (_targetTransform != null)
+        if (GameplayManager.instance.isPlaying)
         {
-            Vector3 direction = _targetTransform - transform.position;
-            direction.Normalize();
+            if (_targetTransform != null)
+            {
+                Vector3 direction = _targetTransform - transform.position;
+                direction.Normalize();
 
-            transform.Translate(direction * (_currentSpeed * Time.deltaTime));
+                transform.Translate(direction * (_currentSpeed * Time.deltaTime));
+            }
         }
     }
 

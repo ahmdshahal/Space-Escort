@@ -14,52 +14,79 @@ public class EnemySpawner : MonoBehaviour
     public float delayWave;
 
     private int lastSpawnPointIndex = -1; // Track the last spawned spawn point
+    private Coroutine spawnCoroutine; // Declare a variable to store the reference to the coroutine
 
     void Start()
     {
         objectPools = GetComponentsInChildren<ObjectPoolScript>();
-        StartCoroutine(SpawnObjectsWithDelay());
+
+        if (GameplayManager.instance.isPlaying)
+        {
+            // Start the coroutine and store the reference
+            spawnCoroutine = StartCoroutine(SpawnObjectsWithDelay());
+        }
+    }
+
+    void Update()
+    {
+        // Check if the gameplay state has changed
+        if (GameplayManager.instance.isPlaying && spawnCoroutine == null)
+        {
+            // Start the coroutine if it hasn't been started
+            spawnCoroutine = StartCoroutine(SpawnObjectsWithDelay());
+        }
+        else if (!GameplayManager.instance.isPlaying && spawnCoroutine != null)
+        {
+            // Stop the coroutine if it's running
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null; // Reset the reference
+        }
     }
 
     IEnumerator SpawnObjectsWithDelay()
     {
-        if (spawnPoints.Length == 0 || objectPools.Length == 0)
+        // Check if gameplay is currently active
+        while (GameplayManager.instance.isPlaying)
         {
-            Debug.LogError("Spawn points or objects to spawn are not set!");
-            yield break;
+            if (spawnPoints.Length == 0 || objectPools.Length == 0)
+            {
+                Debug.LogError("Spawn points or objects to spawn are not set!");
+                yield break;
+            }
+
+            while (spawnedCount < totalSpawn)
+            {
+                SpawnObject();
+
+                spawnedCount++;
+
+                yield return new WaitForSeconds(spawnDelay);
+            }
+
+            Debug.Log("Spawn complete!");
+
+            // Restart
+            yield return new WaitForSeconds(delayWave);
+
+            spawnedCount = 0;
+
+            if (currentWave % 3 == 0)
+            {
+                spawnDelay = Mathf.Max(0.5f, spawnDelay - 0.75f);
+                currentWave++;
+            }
+
+            if (currentWave % 4 == 0)
+            {
+                spawnDelay = Mathf.Max(12f, spawnDelay - 1f);
+            }
+
+            lastSpawnPointIndex = -1; // Reset the last spawned spawn point index
         }
 
-        while (spawnedCount < totalSpawn)
-        {
-            SpawnObject();
-
-            spawnedCount++;
-
-            yield return new WaitForSeconds(spawnDelay);
-        }
-
-        Debug.Log("Spawn complete!");
-
-        // Restart
-        yield return new WaitForSeconds(delayWave);
-
-        spawnedCount = 0;
-
-        if (currentWave % 3 == 0)
-        {
-            spawnDelay = Mathf.Max(0.5f, spawnDelay - 0.75f);
-            currentWave++;
-        }
-
-        if (currentWave % 4 == 0)
-        {
-            spawnDelay = Mathf.Max(12f, spawnDelay - 1f);
-        }
-
-        lastSpawnPointIndex = -1; // Reset the last spawned spawn point index
-
-        StartCoroutine(SpawnObjectsWithDelay());
+        yield return null; // Use yield return null to allow the while loop to check the condition in the next frame
     }
+
 
     private void SpawnObject()
     {

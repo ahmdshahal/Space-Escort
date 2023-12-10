@@ -13,6 +13,7 @@ public class GameplayManager : MonoBehaviour
 
     public int score;
     public bool isGameplay = true;
+    public bool isPlaying;
 
     public static GameplayManager instance;
 
@@ -31,15 +32,7 @@ public class GameplayManager : MonoBehaviour
         upgradePanel.gameObject.SetActive(false);
 
         isGameplay = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(!isGameplay)
-        {
-            Time.timeScale = 0;
-        }
+        Resume();
     }
 
     public void Addscore(int addedScore)
@@ -50,25 +43,29 @@ public class GameplayManager : MonoBehaviour
 
     public void GameOverScreen()
     {
+        Pause();
         StartCoroutine(PlayGameOver());
     }
 
     public void UpgradePanel()
     {
         upgradePanel.gameObject.SetActive(true);
-        isGameplay = false;
+        Pause();
     }
 
-    public void unPause()
+    public void Resume()
     {
-        isGameplay = true;
-        Time.timeScale = 1;
+        isPlaying = true;
+    }
+
+    public void Pause()
+    {
+        isPlaying = false;
     }
 
     public void GameClearScreen()
     {
-        Debug.Log("GameClear");
-
+        Pause();
         StartCoroutine(PlayGameClear());
     }
 
@@ -78,7 +75,6 @@ public class GameplayManager : MonoBehaviour
         GameClearPanel.SetActive(true);
 
         yield return new WaitForSeconds(SoundManagerScript.instance.GetSoundLength(4));
-        isGameplay = false;
     }
 
     IEnumerator PlayGameOver()
@@ -87,6 +83,5 @@ public class GameplayManager : MonoBehaviour
         GameOverPanel.SetActive(true);
 
         yield return new WaitForSeconds(SoundManagerScript.instance.GetSoundLength(5));
-        isGameplay = false;
     }
 }
