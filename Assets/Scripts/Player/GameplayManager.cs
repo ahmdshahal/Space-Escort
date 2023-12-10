@@ -50,9 +50,7 @@ public class GameplayManager : MonoBehaviour
 
     public void GameOverScreen()
     {
-        SoundManagerScript.instance.Playsound(5);
-        GameOverPanel.SetActive(true);
-        isGameplay = false;
+        StartCoroutine(PlayGameOver());
     }
 
     public void UpgradePanel()
@@ -70,8 +68,25 @@ public class GameplayManager : MonoBehaviour
     public void GameClearScreen()
     {
         Debug.Log("GameClear");
+
+        StartCoroutine(PlayGameClear());
+    }
+
+    IEnumerator PlayGameClear()
+    {
         SoundManagerScript.instance.Playsound(4);
         GameClearPanel.SetActive(true);
+
+        yield return new WaitForSeconds(SoundManagerScript.instance.GetSoundLength(4));
+        isGameplay = false;
+    }
+
+    IEnumerator PlayGameOver()
+    {
+        SoundManagerScript.instance.Playsound(5);
+        GameOverPanel.SetActive(true);
+
+        yield return new WaitForSeconds(SoundManagerScript.instance.GetSoundLength(5));
         isGameplay = false;
     }
 }

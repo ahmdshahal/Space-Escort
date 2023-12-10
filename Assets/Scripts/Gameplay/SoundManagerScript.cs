@@ -26,4 +26,14 @@ public class SoundManagerScript : MonoBehaviour
     {
         Source.PlayOneShot(AudioList[Index]);
     }
+
+    public float GetSoundLength(int soundIndex)
+    {
+        if (soundIndex >= 0 && soundIndex < AudioList.Length)
+        {
+            return AudioList[soundIndex].length;
+        }
+
+        return 0f;
+    }
 }
